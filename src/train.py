@@ -9,7 +9,7 @@ from src.model import build_cnn_model
 from utils.visualization import plot_training_history, plot_confusion_matrix
 
 def main():
-    # Ensure structural directory exists 
+    # Ensuring that structural directory exists 
     os.makedirs('models', exist_ok=True)
     
     # 1. Pipeline Data Preparation
