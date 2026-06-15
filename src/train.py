@@ -2,7 +2,6 @@ import os
 import sys
 import numpy as np
 
-# Adjust paths to make running from inside src/ safe
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.data_preprocessing import load_and_preprocess_data
@@ -10,7 +9,7 @@ from src.model import build_cnn_model
 from utils.visualization import plot_training_history, plot_confusion_matrix
 
 def main():
-    # Ensure structural directory exists for artifacts
+    # Ensure structural directory exists 
     os.makedirs('models', exist_ok=True)
     
     # 1. Pipeline Data Preparation

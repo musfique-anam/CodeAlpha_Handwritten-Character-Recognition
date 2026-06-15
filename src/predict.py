@@ -14,27 +14,21 @@ def predict_custom_image(image_path):
     # Load serialized model instance
     model = tf.keras.models.load_model(model_path)
 
-    # Ingest target image tracking arrays as a single grayscale layer
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     if img is None:
         print(f"[ERROR] Target invalid or unreadable file pathway: {image_path}")
         return
     
-    # Resize spatial resolution matching network matrix boundaries
+    # Resize spatial resolution 
     img_resized = cv2.resize(img, (28, 28))
     
-    # Invert binary matrices if background layout contains light pixels
-    # MNIST relies explicitly on high contrast dark fields with white characters
     if np.mean(img_resized) > 127:
         img_resized = cv2.bitwise_not(img_resized)
         
-    # Scale density profiles matching dynamic distribution values [0, 1]
     img_normalized = img_resized.astype('float32') / 255.0
     
-    # Reshape matching standard tensor structure expected by model batching (1, 28, 28, 1)
     img_input = np.expand_dims(np.expand_dims(img_normalized, axis=0), axis=-1)
     
-    # Execute class extraction inference mappings
     prediction = model.predict(img_input, verbose=0)
     predicted_digit = np.argmax(prediction)
     confidence = np.max(prediction) * 100
