@@ -30,15 +30,19 @@ handwritten-character-recognition/
 │   ├── data_preprocessing.py    # Data loading and scaling pipeline
 │   ├── model.py                 # CNN architecture definition
 │   ├── train.py                 # Model training loop execution
-│   └── predict.py               # Custom inference script
+│   └── predict.py               # Updated script with text output saving
+│
+├── test_images/                 # 📂 PLACE YOUR PHONE PHOTOS HERE!
+│   └── my_writing.jpg           # Real image of your handwriting
 │
 ├── utils/
 │   ├── __init__.py
 │   └── visualization.py         # Matplotlib/Seaborn charting helpers
 │
+├── output.txt                   # 📄 Auto-generated file with prediction results
 ├── requirements.txt             # Project library dependencies
+├── test.py
 └── README.md                    # Project documentation
-
 ```
 
 ---
